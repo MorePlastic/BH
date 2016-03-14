@@ -26,7 +26,7 @@ public class Registrering extends Application{
 
         tabs.getTabs().addAll(kidTab, teacherTab);
 
-        Kids test = new Kids("Emil", "Lagoni", "Swag", false, "spasser");
+        Kids test = new Kids("Emil", "Plepian", "Swag", false, "spasser");
 
         test.addContact(new ICE("a", "b", "c", false));
 

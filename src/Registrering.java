@@ -21,7 +21,9 @@ public class Registrering extends Application{
 
         Tab kidTab = new Tab("Kids");
         Tab teacherTab = new Tab("Teachers");
-        Button button1 = new Button("ICE");
+
+        kidTab.setClosable(false);
+        teacherTab.setClosable(false);
 
 
         tabs.getTabs().addAll(kidTab, teacherTab);
@@ -66,6 +68,7 @@ public class Registrering extends Application{
 
         kidsTableView.getColumns().addAll(kidsFirstName, kidsLastName, kidsCpr, checkOut, checkIn, ICEButton);
 
+        kidTab.setContent(kidsTableView);
 
         ObservableList<Teacher> teachers = FXCollections.observableArrayList(
                 new Teacher("Hashtag", "YOLO", "666", false)
@@ -74,9 +77,11 @@ public class Registrering extends Application{
         TableView<Teacher> teacherTableView = new TableView<>();
         teacherTableView.itemsProperty().setValue(teachers);
 
+        teacherTab.setContent(teacherTableView);
+
 
         StackPane pane = new StackPane();
-        pane.getChildren().add(kidsTableView);
+        pane.getChildren().add(tabs);
         Scene scene = new Scene(pane);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Persons");

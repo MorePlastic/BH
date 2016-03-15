@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.StackPane;
@@ -57,7 +56,7 @@ public class Registrering extends Application{
         TableColumn<Kids, String> kidsCpr = new TableColumn<>("Cpr: ");
         TableColumn<Kids, CheckBox> checkIn = new TableColumn<>("Check Out: ");
         TableColumn<Kids, CheckBox> checkOut = new TableColumn<>("Check In: ");
-        TableColumn<Kids, CheckBox> ill = new TableColumn<>("Ill?");
+        TableColumn<Kids, CheckBox> ill = new TableColumn<>("Sick?");
         TableColumn<Kids, Button> ICEButton = new TableColumn<>("ICE: ");
         TableColumn<Kids, Button> killKid = new TableColumn<>("Remove Kid: ");
 

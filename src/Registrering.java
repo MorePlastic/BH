@@ -101,6 +101,12 @@ public class Registrering extends Application{
 
 
         teacherTableView.getColumns().addAll(teacherFirstName, teacherLastName, employeeID, teachercheckIn, teachercheckOut, killTeacher);
+
+        teacherFirstName.setCellFactory(TextFieldTableCell.forTableColumn());
+        teacherFirstName.setCellFactory(TextFieldTableCell.forTableColumn());
+        employeeID.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
         teacherTableView.setEditable(true);
 
         teacherTab.setContent(teacherTableView);

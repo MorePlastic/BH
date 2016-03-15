@@ -31,6 +31,7 @@ public class Registrering extends Application{
         kidTab.setClosable(false);
         teacherTab.setClosable(false);
         addKidTab.setClosable(false);
+        addTeacherTab.setClosable(false);
 
 
 
@@ -38,6 +39,7 @@ public class Registrering extends Application{
 
 
         Kids test = new Kids("Emil", "Plepian", "Swag", false, "spasser");
+        test.addContact(new ICE("a", "b", "hue", "007"));
 
 
         ObservableList<Kids> kidses = FXCollections.observableArrayList

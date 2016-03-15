@@ -1,5 +1,6 @@
 package human;
 
+import gui.ICEForm;
 import javafx.scene.control.Button;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ public class Kids extends People {
 
     private ArrayList<ICE> contacts;
     private String notes;
-    private Button button;
+    private Button button = new Button("ICE");
     private boolean isIll;
 
 
@@ -17,32 +18,32 @@ public class Kids extends People {
         super(firstName, lastName, id, false);
         this.notes = "";
         this.contacts = new ArrayList<>();
-        this.button = new Button("ICE");
         this.isIll = false;
+        this.button.setOnAction(e -> ICEForm.displayICEs(this));
     }
 
     public Kids(String firstName, String lastName, String id, boolean checkIn) {
         super(firstName, lastName, id, checkIn);
         this.notes = "";
         this.contacts = new ArrayList<>();
-        this.button = new Button("ICE");
         this.isIll = false;
+        this.button.setOnAction(e -> ICEForm.displayICEs(this));
     }
 
     public Kids(String firstName, String lastName, String id, boolean checkIn, String notes) {
         super(firstName, lastName, id, checkIn);
         this.contacts = new ArrayList<>();
         this.notes = notes;
-        this.button = new Button("ICE");
         this.isIll = false;
+        this.button.setOnAction(e -> ICEForm.displayICEs(this));
     }
 
     public Kids(String firstName, String lastName, String id, boolean checkIn, ArrayList<ICE> contacts) {
         super(firstName, lastName, id, checkIn);
         this.contacts = contacts;
-        this.button = new Button("ICE");
         this.notes = "";
         this.isIll = false;
+        this.button.setOnAction(e -> ICEForm.displayICEs(this));
     }
 
     public Kids(String firstName, String lastName, String id, boolean checkIn, ArrayList<ICE> contacts, String notes) {
@@ -50,6 +51,7 @@ public class Kids extends People {
         this.contacts = contacts;
         this.notes = notes;
         this.isIll = false;
+        this.button.setOnAction(e -> ICEForm.displayICEs(this));
     }
 
     public void addContacts(ICE... contacts) {
@@ -60,6 +62,10 @@ public class Kids extends People {
 
     public void addContact(ICE contact) {
         this.contacts.add(contact);
+    }
+
+    public void addContact(ArrayList<ICE> contacts) {
+        this.contacts.addAll(contacts);
     }
 
     public void removeContact(ICE contact) {

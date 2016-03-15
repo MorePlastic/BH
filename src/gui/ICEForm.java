@@ -1,10 +1,12 @@
 package gui;
 
 import human.ICE;
+import human.Kids;
+import javafx.collections.FXCollections;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -55,10 +57,39 @@ public class ICEForm {
         window.setScene(scene);
         window.showAndWait();
 
-        System.out.println(ices);
-
         return ices;
     }
 
+    public static void displayICEs(Kids kid) {
+        Stage window = new Stage();
+
+        TableView<ICE> iceTableView = new TableView<>();
+        iceTableView.setEditable(true);
+        iceTableView.itemsProperty().setValue(FXCollections.observableArrayList(kid.getContacts()));
+
+        TableColumn<ICE, String> firstName = new TableColumn<>("First name:");
+        TableColumn<ICE, String> lastName = new TableColumn<>("Last name");
+        TableColumn<ICE, String> phoneNumber = new TableColumn<>("Phone number");
+        TableColumn<ICE, String> id = new TableColumn<>("ID");
+
+        firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        phoneNumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+
+        iceTableView.getColumns().addAll(firstName, lastName, phoneNumber, id);
+
+        BorderPane pane = new BorderPane();
+        pane.setCenter(iceTableView);
+        Button addICE = new Button("Add Contact");
+        addICE.setOnAction(e -> kid.addContact(ICEForm.iceForm()));
+        pane.setBottom(addICE);
+
+        Scene scene = new Scene(pane);
+
+        window.setScene(scene);
+        window.show();
+
+    }
 
 }

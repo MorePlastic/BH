@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.StackPane;
@@ -51,6 +52,7 @@ public class Registrering extends Application{
         TableColumn<Kids, String> kidsCpr = new TableColumn<>("Cpr: ");
         TableColumn<Kids, CheckBox> checkIn = new TableColumn<>("Check Out: ");
         TableColumn<Kids, CheckBox> checkOut = new TableColumn<>("Check In: ");
+        TableColumn<Kids, CheckBox> ill = new TableColumn<>("Ill?");
         TableColumn<Kids, Button> ICEButton = new TableColumn<>("ICE: ");
         TableColumn<Kids, Button> killKid = new TableColumn<>("Remove Kid: ");
 
@@ -60,6 +62,7 @@ public class Registrering extends Application{
         kidsCpr.setCellValueFactory(new PropertyValueFactory<>("id"));
         checkOut.setCellValueFactory(new PropertyValueFactory<>("checkOut"));
         checkIn.setCellValueFactory(new PropertyValueFactory<>("checkIn"));
+        ill.setCellValueFactory(new PropertyValueFactory<>("isIll"));
         ICEButton.setCellValueFactory(new PropertyValueFactory<>("button"));
 
 
@@ -71,7 +74,7 @@ public class Registrering extends Application{
         kidsTableView.setEditable(true);
 
 
-        kidsTableView.getColumns().addAll(kidsFirstName, kidsLastName, kidsCpr, checkOut, checkIn, ICEButton, killKid);
+        kidsTableView.getColumns().addAll(kidsFirstName, kidsLastName, kidsCpr, checkOut, checkIn, ill, ICEButton, killKid);
 
         kidTab.setContent(kidsTableView);
 
@@ -98,6 +101,8 @@ public class Registrering extends Application{
 
 
         teacherTableView.getColumns().addAll(teacherFirstName, teacherLastName, employeeID, teachercheckIn, teachercheckOut, killTeacher);
+        teacherTableView.setEditable(true);
+
         teacherTab.setContent(teacherTableView);
 
 

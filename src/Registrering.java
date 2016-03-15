@@ -66,8 +66,12 @@ public class Registrering extends Application{
         kidsCpr.setCellValueFactory(new PropertyValueFactory<>("id"));
         checkOut.setCellValueFactory(new PropertyValueFactory<>("checkOut"));
         checkIn.setCellValueFactory(new PropertyValueFactory<>("checkIn"));
-        ill.setCellValueFactory(new PropertyValueFactory<>("isIll"));
+        ill.setCellValueFactory(new PropertyValueFactory<>("illBox"));
         ICEButton.setCellValueFactory(new PropertyValueFactory<>("button"));
+        killKid.setCellValueFactory(new PropertyValueFactory<>("kill"));
+
+        Button kill = new Button("Remove");
+        kill.setOnAction(e-> kidses.remove(1));
 
 
         kidsFirstName.setCellFactory(TextFieldTableCell.forTableColumn());

@@ -2,6 +2,7 @@ package human;
 
 import gui.ICEForm;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 
 import java.util.ArrayList;
 
@@ -11,9 +12,9 @@ public class Kids extends People {
     private String notes;
     private Button button = new Button("ICE");
     private boolean isIll;
+    private CheckBox illBox = new CheckBox();
 
 
-    // Used for new kids
     public Kids(String firstName, String lastName, String id) {
         super(firstName, lastName, id, false);
         this.notes = "";
@@ -102,5 +103,13 @@ public class Kids extends People {
 
     public void setIll(boolean ill) {
         isIll = ill;
+    }
+
+    public CheckBox getIllBox() {
+        return illBox;
+    }
+
+    public void setIllBox(CheckBox illBox) {
+        this.illBox = illBox;
     }
 }

@@ -40,9 +40,14 @@ public class AddKid {
 
         });
 
+        Button addICE = new Button("Add ICE");
+
+        addICE.setOnAction(e -> list.add(new Kids("", "", "", false, ICEForm.iceForm())));
+
         GridPane layout = new GridPane();
         layout.addColumn(0, firstNameLabel, lastNameLabel, cprLabel);
         layout.addColumn(1, firstNameField, lastNameField, cprField);
+        layout.add(addKid, 2, 2);
         Scene scene = new Scene(layout);
 
         window.setScene(scene);

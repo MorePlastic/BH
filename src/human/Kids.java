@@ -9,6 +9,7 @@ public class Kids extends People {
     private ArrayList<ICE> contacts;
     private String notes;
     private Button button;
+    private boolean isIll;
 
 
     // Used for new kids
@@ -16,14 +17,16 @@ public class Kids extends People {
         super(firstName, lastName, id, false);
         this.notes = "";
         this.contacts = new ArrayList<>();
-        this.button = new Button("ICE for ");
+        this.button = new Button("ICE");
+        this.isIll = false;
     }
 
     public Kids(String firstName, String lastName, String id, boolean checkIn) {
         super(firstName, lastName, id, checkIn);
         this.notes = "";
         this.contacts = new ArrayList<>();
-        this.button = new Button("ICE for ");
+        this.button = new Button("ICE");
+        this.isIll = false;
     }
 
     public Kids(String firstName, String lastName, String id, boolean checkIn, String notes) {
@@ -31,19 +34,22 @@ public class Kids extends People {
         this.contacts = new ArrayList<>();
         this.notes = notes;
         this.button = new Button("ICE");
+        this.isIll = false;
     }
 
     public Kids(String firstName, String lastName, String id, boolean checkIn, ArrayList<ICE> contacts) {
         super(firstName, lastName, id, checkIn);
         this.contacts = contacts;
-        this.button = new Button("ICE for " + firstName);
+        this.button = new Button("ICE");
         this.notes = "";
+        this.isIll = false;
     }
 
     public Kids(String firstName, String lastName, String id, boolean checkIn, ArrayList<ICE> contacts, String notes) {
         super(firstName, lastName, id, checkIn);
         this.contacts = contacts;
         this.notes = notes;
+        this.isIll = false;
     }
 
     public void addContacts(ICE... contacts) {
@@ -82,5 +88,13 @@ public class Kids extends People {
 
     public void setContacts(ArrayList<ICE> contacts) {
         this.contacts = contacts;
+    }
+
+    public boolean isIll() {
+        return isIll;
+    }
+
+    public void setIll(boolean ill) {
+        isIll = ill;
     }
 }

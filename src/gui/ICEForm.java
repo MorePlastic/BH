@@ -25,6 +25,7 @@ public class ICEForm {
         TextField firstNameField = new TextField();
         TextField lastNameField = new TextField();
         TextField phoneField = new TextField();
+        TextField IDField = new TextField();
 
         Button closeButton = new Button("Close");
         closeButton.setOnAction(e -> window.close());
@@ -40,6 +41,9 @@ public class ICEForm {
         });
 
         GridPane pane = new GridPane();
+
+        pane.addColumn(0, firstNameLabel, lastNameLabel, phoneLabel, IDLabel);
+        pane.addColumn(1, firstNameField, lastNameField, phoneField, IDField);
 
 
         return ices;

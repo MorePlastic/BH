@@ -1,3 +1,4 @@
+import gui.AddKid;
 import human.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -22,16 +23,18 @@ public class Registrering extends Application{
 
         Tab kidTab = new Tab("Kids");
         Tab teacherTab = new Tab("Teachers");
+        Tab addKidTab = new Tab("Add new kid");
 
         kidTab.setClosable(false);
         teacherTab.setClosable(false);
+        addKidTab.setClosable(false);
 
 
-        tabs.getTabs().addAll(kidTab, teacherTab);
+        tabs.getTabs().addAll(kidTab, teacherTab, addKidTab);
+
 
         Kids test = new Kids("Emil", "Plepian", "Swag", false, "spasser");
 
-        //test.addContact(new ICE("a", "b", "c", false));
 
         ObservableList<Kids> kidses = FXCollections.observableArrayList
                 (new Kids("jonas", "nielsen", "06022005", false, "Ill"),
@@ -49,6 +52,7 @@ public class Registrering extends Application{
         TableColumn<Kids, CheckBox> checkIn = new TableColumn<>("Check Out: ");
         TableColumn<Kids, CheckBox> checkOut = new TableColumn<>("Check In: ");
         TableColumn<Kids, Button> ICEButton = new TableColumn<>("ICE: ");
+        TableColumn<Kids, Button> killKid = new TableColumn<>("Remove Kid: ");
 
 
         kidsFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -67,7 +71,7 @@ public class Registrering extends Application{
         kidsTableView.setEditable(true);
 
 
-        kidsTableView.getColumns().addAll(kidsFirstName, kidsLastName, kidsCpr, checkOut, checkIn, ICEButton);
+        kidsTableView.getColumns().addAll(kidsFirstName, kidsLastName, kidsCpr, checkOut, checkIn, ICEButton, killKid);
 
         kidTab.setContent(kidsTableView);
 
@@ -78,7 +82,28 @@ public class Registrering extends Application{
         TableView<Teacher> teacherTableView = new TableView<>();
         teacherTableView.itemsProperty().setValue(teachers);
 
+        TableColumn<Teacher, String> teacherFirstName = new TableColumn<>("First Name: ");
+        TableColumn<Teacher, String> teacherLastName = new TableColumn<>("Last Name: ");
+        TableColumn<Teacher, String> employeeID = new TableColumn<>("Employee ID: ");
+        TableColumn<Teacher, CheckBox> teachercheckIn = new TableColumn<>("Check Out: ");
+        TableColumn<Teacher, CheckBox> teachercheckOut = new TableColumn<>("Check In: ");
+        TableColumn<Teacher, Button> killTeacher = new TableColumn<>("Remove Teacher: ");
+
+
+        teacherFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        teacherLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        employeeID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        teachercheckOut.setCellValueFactory(new PropertyValueFactory<>("checkOut"));
+        teachercheckIn.setCellValueFactory(new PropertyValueFactory<>("checkIn"));
+
+
+        teacherTableView.getColumns().addAll(teacherFirstName, teacherLastName, employeeID, teachercheckIn, teachercheckOut, killTeacher);
         teacherTab.setContent(teacherTableView);
+
+
+        Button addKidButton = new Button("hej");
+        addKidButton.setOnAction(e -> AddKid.display(kidses));
+        addKidTab.setContent(addKidButton);
 
 
         StackPane pane = new StackPane();

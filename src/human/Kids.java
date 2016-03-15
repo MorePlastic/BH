@@ -1,3 +1,5 @@
+package human;
+
 import javafx.scene.control.Button;
 
 import java.util.ArrayList;
@@ -7,6 +9,15 @@ public class Kids extends People {
     private ArrayList<ICE> contacts;
     private String notes;
     private Button button;
+
+
+    // Used for new kids
+    public Kids(String firstName, String lastName, String id) {
+        super(firstName, lastName, id, false);
+        this.notes = "";
+        this.contacts = new ArrayList<>();
+        this.button = new Button("ICE for ");
+    }
 
     public Kids(String firstName, String lastName, String id, boolean checkIn) {
         super(firstName, lastName, id, checkIn);

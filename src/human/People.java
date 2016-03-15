@@ -1,3 +1,5 @@
+package human;
+
 import javafx.scene.control.CheckBox;
 
 public class People {

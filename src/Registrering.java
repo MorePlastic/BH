@@ -1,3 +1,4 @@
+import human.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,7 +31,7 @@ public class Registrering extends Application{
 
         Kids test = new Kids("Emil", "Plepian", "Swag", false, "spasser");
 
-        test.addContact(new ICE("a", "b", "c", false));
+        //test.addContact(new ICE("a", "b", "c", false));
 
         ObservableList<Kids> kidses = FXCollections.observableArrayList
                 (new Kids("jonas", "nielsen", "06022005", false, "Ill"),

@@ -41,7 +41,10 @@ public class AddKid {
             String lastName = lastNameField.getText();
             String cpr = cprField.getText();
 
-            list.add(new Kids(firstName, lastName, cpr, false, ICEForm.iceForm()));
+            ArrayList<ICE> icey = new ArrayList<>();
+            icey.add(ICEForm.iceForm());
+
+            list.add(new Kids(firstName, lastName, cpr, false, icey));
             window.close();
         });
 

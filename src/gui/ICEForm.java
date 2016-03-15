@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 public class ICEForm {
 
-    public static ArrayList<ICE> iceForm() {
+    public static ArrayList<ICE> iceFormList() {
         ArrayList<ICE> ices = new ArrayList<>();
 
         Stage window = new Stage();
@@ -23,10 +24,10 @@ public class ICEForm {
         window.initModality(Modality.APPLICATION_MODAL);
 
 
-        Label firstNameLabel = new Label("First name: ");
-        Label lastNameLabel = new Label("Last name: ");
-        Label phoneLabel = new Label("Phone number: ");
-        Label IDLabel = new Label("ID: ");
+        Label firstNameLabel = new Label("First name:");
+        Label lastNameLabel = new Label("Last name:");
+        Label phoneLabel = new Label("Phone number:");
+        Label IDLabel = new Label("ID:");
 
         TextField firstNameField = new TextField();
         TextField lastNameField = new TextField();
@@ -60,6 +61,55 @@ public class ICEForm {
         return ices;
     }
 
+    public static ICE iceForm() {
+        ICE ice = new ICE();
+
+        Stage window = new Stage();
+        window.setTitle("Add ICE info");
+        window.initModality(Modality.APPLICATION_MODAL);
+
+
+        Label firstNameLabel = new Label("First name:");
+        Label lastNameLabel = new Label("Last name:");
+        Label phoneLabel = new Label("Phone number:");
+        Label IDLabel = new Label("ID:");
+
+        TextField firstNameField = new TextField();
+        TextField lastNameField = new TextField();
+        TextField phoneField = new TextField();
+        TextField IDField = new TextField();
+
+        Button closeButton = new Button("Close");
+        closeButton.setOnAction(e -> window.close());
+
+        Button addICE = new Button("Add contact");
+        addICE.setOnAction(e -> {
+            String firstName = firstNameField.getText();
+            String lastName = lastNameField.getText();
+            String phoneNumber = phoneField.getText();
+            String id = IDField.getText();
+
+            ice.setPhoneNumber(phoneNumber);
+            ice.setId(id);
+            ice.setFirstName(firstName);
+            ice.setLastName(lastName);
+
+        });
+
+        GridPane pane = new GridPane();
+
+        pane.addColumn(0, firstNameLabel, lastNameLabel, phoneLabel, IDLabel);
+        pane.addColumn(1, firstNameField, lastNameField, phoneField, IDField);
+        pane.add(closeButton, 0, 5);
+        pane.add(addICE, 1, 5);
+
+        Scene scene = new Scene(pane);
+        window.setScene(scene);
+        window.showAndWait();
+
+
+        return ice;
+    }
     public static void displayICEs(Kids kid) {
         Stage window = new Stage();
 
@@ -77,10 +127,16 @@ public class ICEForm {
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
 
+        firstName.setCellFactory(TextFieldTableCell.forTableColumn());
+        lastName.setCellFactory(TextFieldTableCell.forTableColumn());
+        id.setCellFactory(TextFieldTableCell.forTableColumn());
+        phoneNumber.setCellFactory(TextFieldTableCell.forTableColumn());
+
         iceTableView.getColumns().addAll(firstName, lastName, phoneNumber, id);
 
         BorderPane pane = new BorderPane();
         pane.setCenter(iceTableView);
+
         Button addICE = new Button("Add Contact");
         addICE.setOnAction(e -> kid.addContact(ICEForm.iceForm()));
         pane.setBottom(addICE);

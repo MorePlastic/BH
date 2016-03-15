@@ -16,6 +16,8 @@ public class People {
         this.checkOut.setSelected(!checkIn);
     }
 
+    protected People() {}
+
     public String getFirstName() {
         return firstName;
     }

@@ -7,6 +7,8 @@ public class ICE extends People {
         this.phoneNumber = phoneNumber;
     }
 
+    public ICE() {}
+
     public String getPhoneNumber() {
         return phoneNumber;
     }

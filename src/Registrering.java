@@ -130,7 +130,7 @@ public class Registrering extends Application{
         Scene scene = new Scene(pane);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Persons");
-        primaryStage.setWidth(650);
+        primaryStage.setWidth(800);
         primaryStage.setHeight(400);
         primaryStage.show();
     }

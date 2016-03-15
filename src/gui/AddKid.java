@@ -37,7 +37,7 @@ public class AddKid {
             String cpr = cprField.getText();
 
             list.add(new Kids(firstName, lastName, cpr));
-
+            window.close();
         });
 
         Button addICE = new Button("Add ICE");

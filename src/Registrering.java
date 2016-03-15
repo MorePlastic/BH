@@ -1,4 +1,5 @@
 import gui.AddKid;
+import gui.AddTeacher;
 import human.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -25,13 +26,15 @@ public class Registrering extends Application{
         Tab kidTab = new Tab("Kids");
         Tab teacherTab = new Tab("Teachers");
         Tab addKidTab = new Tab("Add new kid");
+        Tab addTeacherTab = new Tab("Add new teacher");
 
         kidTab.setClosable(false);
         teacherTab.setClosable(false);
         addKidTab.setClosable(false);
 
 
-        tabs.getTabs().addAll(kidTab, teacherTab, addKidTab);
+
+        tabs.getTabs().addAll(kidTab, teacherTab, addKidTab, addTeacherTab);
 
 
         Kids test = new Kids("Emil", "Plepian", "Swag", false, "spasser");
@@ -112,9 +115,13 @@ public class Registrering extends Application{
         teacherTab.setContent(teacherTableView);
 
 
-        Button addKidButton = new Button("hej");
+        Button addKidButton = new Button("Add kid");
         addKidButton.setOnAction(e -> AddKid.display(kidses));
         addKidTab.setContent(addKidButton);
+
+        Button addTeacherButton = new Button("Add teacher");
+        addTeacherButton.setOnAction(e -> AddTeacher.display(teachers));
+        addTeacherTab.setContent(addTeacherButton);
 
 
         StackPane pane = new StackPane();
